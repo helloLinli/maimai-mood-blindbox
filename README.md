@@ -230,6 +230,7 @@ maimai-mood-blindbox/
 │   ├── blindbox.js            约束求解 + 打分 + 三盒产出 + 确定性开盒
 │   ├── receipt.js             小票渲染（SVG 长图 / 纯文本）+ 版式自检
 │   └── cli.js                 命令行入口 + 自检
+├── index.html                 GitHub Pages 入口（跳转到 web/，页面只有一份实现）
 ├── web/                       交互 Demo（双击即可运行，无需服务器）
 ├── references/                情绪矩阵、诗词手册、MCP 调用配方
 ├── examples/                  完整体验记录（含真实生成的小票）
