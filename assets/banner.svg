@@ -1,0 +1,143 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 440" width="1200" height="440" role="img"
+     aria-label="麦麦心情盲盒 · 小票诗">
+  <defs>
+    <!-- 光源固定在左上 45°，因此高光在左上、投影在右下 -->
+    <radialGradient id="hl" cx="6%" cy="-8%" r="78%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.95"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="screendark" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#2d3436"/>
+      <stop offset="100%" stop-color="#242a2c"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="440" fill="#e0e5ec"/>
+  <rect width="1200" height="440" fill="url(#hl)"/>
+
+  <!-- 蓝图底纹 -->
+  <g opacity="0.07" stroke="#636e72" stroke-width="1">
+    <path d="M0 60H1200M0 120H1200M0 180H1200M0 240H1200M0 300H1200M0 360H1200M0 420H1200"/>
+    <path d="M60 0V440M180 0V440M300 0V440M420 0V440M540 0V440M660 0V440M780 0V440M900 0V440M1020 0V440M1140 0V440"/>
+  </g>
+
+  <!-- 四角螺丝 -->
+  <g fill="none">
+    <circle cx="26" cy="26" r="4" fill="#c9d0dc"/><circle cx="26" cy="26" r="2" fill="#a3b1c6"/>
+    <circle cx="1174" cy="26" r="4" fill="#c9d0dc"/><circle cx="1174" cy="26" r="2" fill="#a3b1c6"/>
+    <circle cx="26" cy="414" r="4" fill="#c9d0dc"/><circle cx="26" cy="414" r="2" fill="#a3b1c6"/>
+    <circle cx="1174" cy="414" r="4" fill="#c9d0dc"/><circle cx="1174" cy="414" r="2" fill="#a3b1c6"/>
+  </g>
+
+  <!-- 状态 LED + mono 标签 -->
+  <circle cx="78" cy="66" r="9" fill="#22c55e" opacity="0.25"/>
+  <circle cx="78" cy="66" r="6" fill="#22c55e"/>
+  <text x="96" y="71" font-family="'JetBrains Mono','SF Mono',Menlo,Consolas,monospace" font-size="13"
+        letter-spacing="2.4" fill="#4a5568">MOOD → BLINDBOX → RECEIPT</text>
+
+  <!-- 标题：深色文字 + 下方 1px 白色高光，模拟浮雕 -->
+  <text x="76" y="166" font-family="'Inter','PingFang SC','Microsoft YaHei',sans-serif" font-size="58"
+        font-weight="800" letter-spacing="-1.6" fill="#ffffff" opacity="0.9">麦麦心情盲盒</text>
+  <text x="76" y="165" font-family="'Inter','PingFang SC','Microsoft YaHei',sans-serif" font-size="58"
+        font-weight="800" letter-spacing="-1.6" fill="#2d3436">麦麦心情盲盒</text>
+
+  <text x="78" y="222" font-family="'Inter','PingFang SC','Microsoft YaHei',sans-serif" font-size="38"
+        font-weight="800" letter-spacing="1" fill="#d92b3f">· 小票诗 ·</text>
+
+  <text x="78" y="268" font-family="'Inter','PingFang SC','Microsoft YaHei',sans-serif" font-size="19"
+        fill="#4a5568">说出此刻心情，AI 开一盒麦当劳，送你一张会说话的情绪小票。</text>
+
+  <!-- 两块物理标签牌（用偏移矩形模拟双侧光源阴影） -->
+  <g>
+    <rect x="79" y="303" width="356" height="46" rx="23" fill="#babecc" opacity="0.75"/>
+    <rect x="73" y="297" width="356" height="46" rx="23" fill="#ffffff"/>
+    <rect x="76" y="300" width="356" height="46" rx="23" fill="#e0e5ec"/>
+    <text x="100" y="329" font-family="'JetBrains Mono','SF Mono',Menlo,Consolas,monospace" font-size="14"
+          fill="#2d3436">麦当劳 MCP · 真实菜单 / 营养 / 价格</text>
+
+    <rect x="467" y="303" width="278" height="46" rx="23" fill="#babecc" opacity="0.75"/>
+    <rect x="461" y="297" width="278" height="46" rx="23" fill="#ffffff"/>
+    <rect x="464" y="300" width="278" height="46" rx="23" fill="#e0e5ec"/>
+    <text x="488" y="329" font-family="'JetBrains Mono','SF Mono',Menlo,Consolas,monospace" font-size="14"
+          fill="#2d3436">确定性开盒 · 结果可复现</text>
+  </g>
+
+  <!-- 右侧：机型外壳 + 屏幕 + 出纸口 -->
+  <g transform="translate(796,54)">
+    <!-- 外壳投影 -->
+    <rect x="10" y="12" width="330" height="270" rx="26" fill="#babecc" opacity="0.8"/>
+    <rect x="-8" y="-8" width="330" height="270" rx="26" fill="#ffffff" opacity="0.9"/>
+    <!-- 外壳 -->
+    <rect width="330" height="270" rx="24" fill="#e0e5ec"/>
+    <rect x="0.5" y="0.5" width="329" height="269" rx="24" fill="none" stroke="#ffffff" stroke-opacity="0.9"/>
+    <!-- 碳纤维质感 -->
+    <g opacity="0.05" stroke="#2d3436" stroke-width="2">
+      <path d="M0 30L330 0M0 90L330 60M0 150L330 120M0 210L330 180M0 270L330 240"/>
+      <path d="M0 240L330 270M0 180L330 210M0 120L330 150M0 60L330 90M0 0L330 30"/>
+    </g>
+    <!-- 屏幕 -->
+    <rect x="18" y="18" width="294" height="172" rx="10" fill="url(#screendark)"/>
+    <rect x="18" y="18" width="294" height="172" rx="10" fill="none" stroke="#1b1f21" stroke-width="2"/>
+    <!-- 扫描线 -->
+    <g opacity="0.35" fill="#000000">
+      <rect x="18" y="22" width="294" height="2"/><rect x="18" y="30" width="294" height="2"/>
+      <rect x="18" y="38" width="294" height="2"/><rect x="18" y="46" width="294" height="2"/>
+      <rect x="18" y="54" width="294" height="2"/><rect x="18" y="62" width="294" height="2"/>
+      <rect x="18" y="70" width="294" height="2"/><rect x="18" y="78" width="294" height="2"/>
+      <rect x="18" y="86" width="294" height="2"/><rect x="18" y="94" width="294" height="2"/>
+      <rect x="18" y="102" width="294" height="2"/><rect x="18" y="110" width="294" height="2"/>
+      <rect x="18" y="118" width="294" height="2"/><rect x="18" y="126" width="294" height="2"/>
+      <rect x="18" y="134" width="294" height="2"/><rect x="18" y="142" width="294" height="2"/>
+      <rect x="18" y="150" width="294" height="2"/><rect x="18" y="158" width="294" height="2"/>
+      <rect x="18" y="166" width="294" height="2"/><rect x="18" y="174" width="294" height="2"/>
+      <rect x="18" y="182" width="294" height="2"/>
+    </g>
+    <text x="36" y="44" font-family="'JetBrains Mono','SF Mono',Menlo,Consolas,monospace" font-size="11"
+          letter-spacing="1.6" fill="#a8b2d1">MOOD ENGINE</text>
+    <circle cx="292" cy="40" r="5" fill="#22c55e" opacity="0.3"/>
+    <circle cx="292" cy="40" r="3.4" fill="#22c55e"/>
+    <text x="36" y="84" font-family="'Inter','PingFang SC','Microsoft YaHei',sans-serif" font-size="30"
+          font-weight="800" fill="#ffffff">加班</text>
+    <text x="36" y="106" font-family="'JetBrains Mono','SF Mono',Menlo,Consolas,monospace" font-size="11"
+          fill="#22c55e">EO-01 · 能量续航</text>
+    <rect x="36" y="120" width="258" height="8" rx="4" fill="#000000" opacity="0.55"/>
+    <rect x="36" y="120" width="238" height="8" rx="4" fill="#22c55e" opacity="0.85"/>
+    <text x="36" y="152" font-family="'JetBrains Mono','SF Mono',Menlo,Consolas,monospace" font-size="11"
+          fill="#a8b2d1">合法组合 2219</text>
+    <text x="36" y="172" font-family="'JetBrains Mono','SF Mono',Menlo,Consolas,monospace" font-size="11"
+          fill="#a8b2d1">SEED 26434542</text>
+    <!-- 散热槽 -->
+    <g fill="#d1d9e6">
+      <rect x="250" y="204" width="4" height="16" rx="2"/><rect x="258" y="204" width="4" height="16" rx="2"/>
+      <rect x="266" y="204" width="4" height="16" rx="2"/><rect x="274" y="204" width="4" height="16" rx="2"/>
+    </g>
+    <!-- 出纸口 + 旋钮 -->
+    <rect x="18" y="236" width="294" height="6" rx="3" fill="#c9d0dc"/>
+    <g fill="#dfe4ec">
+      <circle cx="290" cy="254" r="9"/><circle cx="258" cy="254" r="9"/><circle cx="226" cy="254" r="9"/>
+    </g>
+  </g>
+
+  <!-- 从出纸口吐出的热敏纸 -->
+  <g transform="translate(742,318) rotate(-1.5)">
+    <rect x="6" y="8" width="286" height="96" rx="4" fill="#babecc" opacity="0.85"/>
+    <rect x="0" y="0" width="286" height="96" rx="4" fill="#f7f6f2"/>
+    <rect x="0" y="0" width="286" height="96" rx="4" fill="none" stroke="#ffffff" stroke-opacity="0.8"/>
+    <text x="18" y="30" font-family="'JetBrains Mono','SF Mono',Menlo,Consolas,monospace" font-size="12"
+          fill="#2d3436">SEED 26434542 · 同一天同一心情结果一致</text>
+    <text x="18" y="52" font-family="'Inter','PingFang SC','Microsoft YaHei',sans-serif" font-size="15"
+          fill="#2d3436">先让胃亮起来，剩下的交给明天九点半。</text>
+    <text x="18" y="78" font-family="'JetBrains Mono','SF Mono',Menlo,Consolas,monospace" font-size="18"
+          font-weight="700" fill="#ff4757">#M3992</text>
+    <g fill="#2d3436">
+      <rect x="186" y="64" width="2" height="20"/><rect x="191" y="64" width="1" height="20"/>
+      <rect x="195" y="64" width="2" height="20"/><rect x="200" y="64" width="1" height="20"/>
+      <rect x="204" y="64" width="2" height="20"/><rect x="209" y="64" width="1" height="20"/>
+      <rect x="213" y="64" width="2" height="20"/><rect x="218" y="64" width="1" height="20"/>
+      <rect x="222" y="64" width="2" height="20"/><rect x="227" y="64" width="1" height="20"/>
+      <rect x="231" y="64" width="2" height="20"/><rect x="236" y="64" width="1" height="20"/>
+      <rect x="240" y="64" width="2" height="20"/><rect x="245" y="64" width="1" height="20"/>
+      <rect x="249" y="64" width="2" height="20"/>
+    </g>
+  </g>
+</svg>

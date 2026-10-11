@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="color-scheme" content="light" />
+<title>麦麦心情盲盒 · 小票诗</title>
+<meta name="description" content="说出此刻心情，AI 调麦当劳 MCP 拿真实菜单与营养数据，先算清预算忌口热量，再开一盒，最后给你一张会说话的情绪小票。" />
+
+<!-- 可选：联网时加载 Inter / JetBrains Mono；离线或加载失败时自动回落到系统字体栈 -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" />
+
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<div class="chassis-noise" aria-hidden="true"></div>
+
+<header class="masthead">
+  <div class="container masthead__inner">
+    <a class="brand" href="#top">
+      <span class="led led--on" aria-hidden="true"></span>
+      <span class="brand__name">麦麦心情盲盒</span>
+      <span class="label mono">M-MOOD INSTRUMENT</span>
+    </a>
+    <div class="masthead__status">
+      <span class="led led--on" aria-hidden="true"></span>
+      <span class="label mono">ENGINE ONLINE</span>
+      <span class="label mono dim">v1.0.0</span>
+    </div>
+  </div>
+</header>
+
+<main id="top" class="container">
+
+  <!-- ===================== HERO（60 / 40 非对称） ===================== -->
+  <section class="hero">
+    <div class="hero__copy">
+      <p class="label mono">MOOD → BLINDBOX → RECEIPT</p>
+      <h1 class="hero__title">
+        麦麦心情盲盒<span class="hero__dot" aria-hidden="true">·</span><em>小票诗</em>
+      </h1>
+      <p class="hero__lede">
+        说出此刻心情，这台机器会调麦当劳 MCP 拿当前门店的<strong>真实菜单与营养数据</strong>，
+        先把预算、忌口、热量算清楚，再开一盒，最后给你一张会说话的情绪小票。
+      </p>
+      <div class="hero__cta">
+        <button id="hero-open" class="btn btn--primary btn--lg" type="button">开一个盲盒</button>
+        <a class="btn btn--ghost" href="#how">看它怎么算</a>
+      </div>
+
+      <dl class="statstrip">
+        <div class="stat"><dt class="label mono">情绪档案</dt><dd class="mono">11</dd></div>
+        <div class="stat"><dt class="label mono">约束维度</dt><dd class="mono">5</dd></div>
+        <div class="stat"><dt class="label mono">第三方依赖</dt><dd class="mono">0</dd></div>
+        <div class="stat"><dt class="label mono">版式自检</dt><dd class="mono">528</dd></div>
+      </dl>
+    </div>
+
+    <div class="hero__device">
+      <div class="device">
+        <div class="device__bezel">
+          <div class="device__screen">
+            <div class="screen__head">
+              <span class="label mono">MOOD ENGINE</span>
+              <span class="led led--on" aria-hidden="true"></span>
+            </div>
+            <p class="screen__mood">
+              <span class="screen__icon" id="dev-mood-icon" aria-hidden="true">🎲</span>
+              <span id="dev-mood-label">说不清</span>
+            </p>
+            <p class="mono screen__code" id="dev-mood-code">EO-00 · 交给我决定</p>
+            <div class="screen__meter" aria-hidden="true"><span id="dev-meter"></span></div>
+            <dl class="screen__grid">
+              <div><dt class="label mono">合法组合</dt><dd class="mono" id="dev-combos">—</dd></div>
+              <div><dt class="label mono">候选池</dt><dd class="mono" id="dev-pool">—</dd></div>
+              <div><dt class="label mono">时段</dt><dd class="mono" id="dev-slot">—</dd></div>
+              <div><dt class="label mono">SEED</dt><dd class="mono" id="dev-seed">—</dd></div>
+            </dl>
+            <p class="mono screen__hint" id="dev-hint">STANDBY · 等待输入心情</p>
+          </div>
+          <div class="device__vents" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+        </div>
+        <div class="device__base">
+          <span class="label mono">FEED</span>
+          <span class="device__knobs" aria-hidden="true"><i></i><i></i><i></i></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== 01 输入模块 ===================== -->
+  <section class="section" id="control">
+    <div class="section__head">
+      <span class="tape mono">01 / INPUT</span>
+      <h2 class="section__title">输入模块</h2>
+      <p class="section__hint">一句心情，几个旋钮。剩下的交给机器。</p>
+    </div>
+
+    <div class="panel panel--bolted">
+      <span class="screws" aria-hidden="true"></span>
+      <div class="panel__head">
+        <span class="label mono">MOOD SIGNAL</span>
+        <span class="vents" aria-hidden="true"><i></i><i></i><i></i></span>
+      </div>
+      <label class="well">
+        <span class="sr-only">你现在的心情</span>
+        <textarea id="utterance" rows="2" placeholder="例如：改到第 8 版了，还想再撑一会儿"></textarea>
+      </label>
+      <div class="keys" id="mood-chips" role="group" aria-label="心情快捷标签"></div>
+    </div>
+
+    <div class="panel panel--bolted">
+      <span class="screws" aria-hidden="true"></span>
+      <div class="panel__head">
+        <span class="label mono">LIMITERS</span>
+        <span class="vents" aria-hidden="true"><i></i><i></i><i></i></span>
+      </div>
+
+      <div class="grid-2">
+        <div class="field">
+          <div class="field__head">
+            <span class="label mono">预算 BUDGET</span>
+            <output id="budget-out" class="mono">60 元</output>
+          </div>
+          <div class="well well--slider">
+            <input type="range" id="budget" min="20" max="150" step="5" value="60" />
+          </div>
+        </div>
+
+        <div class="field">
+          <div class="field__head">
+            <span class="label mono">人数 HEADS</span>
+            <output id="people-out" class="mono">1 人</output>
+          </div>
+          <div class="stepper" id="people">
+            <button type="button" data-step="-1" aria-label="减少人数">−</button>
+            <span class="stepper__readout mono" id="people-val">1</span>
+            <button type="button" data-step="1" aria-label="增加人数">+</button>
+          </div>
+        </div>
+
+        <div class="field">
+          <div class="field__head"><span class="label mono">辣度 SPICE</span></div>
+          <div class="seg" id="spicy" role="group" aria-label="辣度">
+            <button type="button" data-val="0" aria-pressed="true">不辣</button>
+            <button type="button" data-val="1" aria-pressed="false">微辣</button>
+            <button type="button" data-val="2" aria-pressed="false">都行</button>
+          </div>
+        </div>
+
+        <div class="field">
+          <div class="field__head"><span class="label mono">人均热量 KCAL</span></div>
+          <div class="seg" id="kcal" role="group" aria-label="人均热量上限">
+            <button type="button" data-val="" aria-pressed="true">不限</button>
+            <button type="button" data-val="600" aria-pressed="false">≤600</button>
+            <button type="button" data-val="750" aria-pressed="false">≤750</button>
+            <button type="button" data-val="900" aria-pressed="false">≤900</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="field field--wide">
+        <div class="field__head"><span class="label mono">忌口 / 偏好 AVOID</span></div>
+        <div class="keys keys--avoid" id="avoid-chips" role="group" aria-label="忌口"></div>
+      </div>
+    </div>
+
+    <div class="firebar">
+      <button id="open-btn" class="btn btn--primary btn--xl" type="button">开一个盲盒</button>
+      <p class="label mono firebar__note">同一天 · 同一心情 · 同一约束 → 同一盒</p>
+    </div>
+  </section>
+
+  <!-- ===================== 02 开盒舞台 ===================== -->
+  <section class="section" id="stage" hidden>
+    <div class="section__head">
+      <span class="tape mono">02 / REVEAL</span>
+      <h2 class="section__title">开盒舞台</h2>
+      <p class="section__hint">三个盒，机器替你抽一个。点其它盒可以换着看。</p>
+    </div>
+    <div class="boxes" id="boxes"></div>
+    <p class="stage-note mono" id="stage-note"></p>
+  </section>
+
+  <!-- ===================== 03 情绪小票 ===================== -->
+  <section class="section" id="result" hidden>
+    <div class="section__head">
+      <span class="tape mono">03 / OUTPUT</span>
+      <h2 class="section__title" id="result-title">你的情绪小票</h2>
+      <p class="hint" id="result-sub"></p>
+    </div>
+
+    <div class="tray">
+      <span class="pin" aria-hidden="true"></span>
+      <div class="receipt-holder" id="receipt-holder"></div>
+    </div>
+
+    <div class="actions">
+      <button type="button" id="speak-btn" class="btn btn--primary">听语音祝福</button>
+      <button type="button" id="save-btn" class="btn">保存小票长图</button>
+      <button type="button" id="copy-btn" class="btn">复制文本小票</button>
+      <button type="button" id="switch-btn" class="btn">换一盒</button>
+    </div>
+    <p class="label mono hint" id="data-note"></p>
+  </section>
+
+  <!-- ===================== 04 工作原理 ===================== -->
+  <section class="section" id="how">
+    <div class="section__head">
+      <span class="tape mono">04 / SCHEMATIC</span>
+      <h2 class="section__title">它是怎么算出来的</h2>
+      <p class="section__hint">事实来自麦当劳 MCP，偏好留在本机引擎 —— 所以同样的输入永远得到同样的输出。</p>
+    </div>
+
+    <div class="schematic">
+      <span class="pipe" aria-hidden="true"></span>
+      <ol class="steps">
+        <li class="step">
+          <span class="step__no mono">01</span>
+          <h3 class="step__title">情绪解析</h3>
+          <p>你那句话被归到一个情绪档案（EO-xx），它决定结构骨架、热量目标、蛋白下限和语气。</p>
+        </li>
+        <li class="step">
+          <span class="step__no mono">02</span>
+          <h3 class="step__title">硬过滤</h3>
+          <p>预算、人数、辣度、忌口、人均热量上限先淘汰一轮。命中忌口的餐品直接出局。</p>
+        </li>
+        <li class="step">
+          <span class="step__no mono">03</span>
+          <h3 class="step__title">组合打分</h3>
+          <p>在主食 × 配餐 × 饮品 × 甜品里枚举合法组合，按情绪贴合度、热量、蛋白质、预算四项加权。</p>
+        </li>
+        <li class="step">
+          <span class="step__no mono">04</span>
+          <h3 class="step__title">三盒产出</h3>
+          <p>稳妥款取最高分；惊喜款换掉主食；反套路款主食、配餐、饮品全部换掉。同分按编码字典序。</p>
+        </li>
+        <li class="step">
+          <span class="step__no mono">05</span>
+          <h3 class="step__title">确定性开盒</h3>
+          <p>用「日期 + 心情 + 约束」的哈希决定揭晓哪一盒，并生成取餐码。可复现、可核对、可分享。</p>
+        </li>
+      </ol>
+    </div>
+
+    <p class="label mono hint">
+      本页为离线演示：使用内置演示菜单，不联网、不写入任何数据、不含任何真实凭证。
+      接入麦当劳 MCP（query-meals / list-nutrition-foods / calculate-price 等）后，菜单、营养与价格会替换为实时结果，见仓库 MCP_INTEGRATION.md。
+    </p>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="container foot__inner">
+    <span class="led led--on" aria-hidden="true"></span>
+    <p class="label mono">参赛作品 · 非麦当劳官方产品</p>
+    <p class="foot__note">餐品、价格与供应状态以麦当劳官方渠道实时结果为准；热量与营养为估算值。</p>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<!-- 引擎按依赖顺序加载（普通脚本，双击打开本文件即可运行，无需服务器） -->
+<script src="../engine/menu.demo.js"></script>
+<script src="../engine/content.js"></script>
+<script src="../engine/blindbox.js"></script>
+<script src="../engine/receipt.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

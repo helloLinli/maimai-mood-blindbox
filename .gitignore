@@ -1,0 +1,17 @@
+# 运行产物 / 本地文件
+work/
+work-*.png
+*.log
+node_modules/
+.DS_Store
+Thumbs.db
+
+# 绝不提交任何真实凭证
+.env
+.env.*
+*.token
+token.json
+
+# workbuddy.md 是 WorkBuddy 专项奖励的凭据文件：只有真实使用 WorkBuddy
+# 并把对话导出替换进去之后才应该提交，否则请不要把它推到公开仓库。
+workbuddy.md

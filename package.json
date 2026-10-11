@@ -1,0 +1,20 @@
+{
+  "name": "maimai-mood-blindbox",
+  "version": "1.0.0",
+  "private": true,
+  "description": "麦麦心情盲盒 · 小票诗 —— 说出此刻心情，AI 开一个麦当劳盲盒套餐，并送你一张会说话的情绪小票。",
+  "keywords": ["mcdonalds", "mcp", "skill", "blindbox", "mood", "receipt-poem"],
+  "license": "MIT",
+  "engines": { "node": ">=18" },
+  "main": "engine/blindbox.js",
+  "scripts": {
+    "test": "node engine/cli.js selfcheck && node engine/cli.js layoutcheck",
+    "selfcheck": "node engine/cli.js selfcheck",
+    "layoutcheck": "node engine/cli.js layoutcheck",
+    "moods": "node engine/cli.js moods",
+    "demo:overtime": "node engine/cli.js receipt --mood overtime --budget 60 --utterance \"改到第8版了，还想撑一会儿\"",
+    "demo:fit": "node engine/cli.js receipt --mood fit --budget 50 --utterance \"在减脂，但真的想吃\"",
+    "demo:celebrate": "node engine/cli.js receipt --mood celebrate --budget 120 --people 2 --utterance \"升职了，想好好吃一顿\"",
+    "assets": "node engine/cli.js receipt --mood overtime --budget 60 --format svg --out assets/receipt-overtime.svg"
+  }
+}
