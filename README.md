@@ -76,8 +76,10 @@ cd maimai-mood-blindbox
 也可以用深链直接分享某个心情的盲盒（打开就自动开盒）：
 
 ```text
-https://hellolinli.github.io/maimai-mood-blindbox/index.html?mood=overtime&budget=60&people=1
+https://hellolinli.github.io/maimai-mood-blindbox/web/index.html?mood=overtime&budget=60&people=1
 ```
+
+（根地址 `https://hellolinli.github.io/maimai-mood-blindbox/?mood=overtime&budget=60&people=1` 会保留参数跳转到上面这一页，两种写法都能用。）
 
 ### 方式二：作为 Skill 接进 Agent（WorkBuddy / Cherry Studio / Cursor / Trae）
 

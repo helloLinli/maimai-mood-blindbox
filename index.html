@@ -8,8 +8,14 @@
   GitHub Pages 只允许从仓库根目录或 /docs 发布，而 Demo 需要 web/ 的相对路径
   （../engine/*.js）才能离线运行，所以根目录只放这个跳转页：
   真正的页面始终只有 web/index.html 这一份，不维护第二份拷贝。
+
+  注意：这里不能用 <meta http-equiv="refresh">，因为它会丢掉查询串，
+  深链参数（?mood=overtime&budget=60）必须原样带到 web/index.html。
 -->
-<meta http-equiv="refresh" content="0; url=web/index.html" />
+<script>
+  location.replace('web/index.html' + location.search + location.hash);
+</script>
+<noscript><meta http-equiv="refresh" content="0; url=web/index.html" /></noscript>
 <link rel="canonical" href="web/index.html" />
 <style>
   body {
